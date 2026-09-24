@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chmwceh1kd4se"]
 
-[ext_resource type="Script" uid="uid://dne62wjawpmhp" path="res://blaster.gd" id="1_8oy20"]
+[ext_resource type="Script" uid="uid://dne62wjawpmhp" path="res://scripts/blaster.gd" id="1_8oy20"]
 [ext_resource type="PackedScene" uid="uid://dq8a12qmf4fr2" path="res://scenes/projectile.tscn" id="2_towk8"]
 [ext_resource type="Texture2D" uid="uid://fqtql36pody6" path="res://sprites/blaster30.png" id="3_crvqn"]
 [ext_resource type="Texture2D" uid="uid://berq0hiovmura" path="res://sprites/muzzle_flash_17.png" id="4_geg22"]

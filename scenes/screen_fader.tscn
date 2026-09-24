@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdgwa3icic776"]
 
-[ext_resource type="Script" uid="uid://c1f1e1muhbytj" path="res://screen_fader.gd" id="1_b6g4f"]
+[ext_resource type="Script" uid="uid://c1f1e1muhbytj" path="res://scripts/screen_fader.gd" id="1_b6g4f"]
 
 [node name="ScreenFader" type="CanvasLayer" unique_id=470942224 node_paths=PackedStringArray("color_rect")]
 script = ExtResource("1_b6g4f")
