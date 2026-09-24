@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxirfaa4tpytb"]
+
+[ext_resource type="Script" uid="uid://bws2pbn5y5oen" path="res://cargo_token.gd" id="1_mnagj"]
+[ext_resource type="Texture2D" uid="uid://c0c0bmyyhwpsl" path="res://sprites/square_16.png" id="2_ixmvw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyfs4"]
+
+[node name="CargoToken" type="Area2D" unique_id=1780440403]
+script = ExtResource("1_mnagj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634714299]
+shape = SubResource("CircleShape2D_gyfs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=857720857]
+modulate = Color(1, 0.76862746, 0.34509805, 1)
+texture = ExtResource("2_ixmvw")

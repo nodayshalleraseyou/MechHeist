@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://clpitjdkkq70i"]
+
+[ext_resource type="Texture2D" uid="uid://c0c0bmyyhwpsl" path="res://sprites/square_16.png" id="1_d5x1h"]
+[ext_resource type="Script" uid="uid://bpbawrvs2heab" path="res://player_input_handler.gd" id="1_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://sprites/ship.tscn" id="2_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://dxirfaa4tpytb" path="res://scenes/cargo_token.tscn" id="3_wr18j"]
+[ext_resource type="PackedScene" uid="uid://chmwceh1kd4se" path="res://scenes/blaster.tscn" id="5_nfk4m"]
+[ext_resource type="Script" uid="uid://f53clfqw2a3" path="res://player_hud.gd" id="6_7ycvg"]
+[ext_resource type="Script" uid="uid://wpjiexib1vcg" path="res://out_of_label.gd" id="6_66tet"]
+[ext_resource type="Script" uid="uid://bcoptldff15f0" path="res://percentage_bar.gd" id="6_nfk4m"]
+[ext_resource type="Script" uid="uid://dpccqoffgou6d" path="res://follow_target.gd" id="6_wr18j"]
+[ext_resource type="PackedScene" uid="uid://bdgwa3icic776" path="res://scenes/screen_fader.tscn" id="10_qwutr"]
+
+[node name="MainScene" type="Node2D" unique_id=624439121]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1623539619]
+modulate = Color(0.1254902, 0.13333334, 0.21176471, 1)
+scale = Vector2(1000, 1000)
+texture = ExtResource("1_d5x1h")
+
+[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=287987951 node_paths=PackedStringArray("player_ship")]
+script = ExtResource("1_gyfs4")
+player_ship = NodePath("../Ship")
+
+[node name="CargoToken" parent="." unique_id=1780440403 instance=ExtResource("3_wr18j")]
+position = Vector2(-42, 22)
+
+[node name="Ship2" parent="." unique_id=1960021945 instance=ExtResource("2_gyfs4")]
+position = Vector2(-60, -49)
+current_cargo = 10
+
+[node name="Ship" parent="." unique_id=1506033227 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
+equipped_item = NodePath("Blaster")
+
+[node name="Blaster" parent="Ship" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543937805 node_paths=PackedStringArray("target")]
+script = ExtResource("6_wr18j")
+target = NodePath("../Ship")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=893884385 node_paths=PackedStringArray("player_ship", "item_out_of_label", "item_percentage_bar")]
+script = ExtResource("6_7ycvg")
+player_ship = NodePath("../Ship")
+item_out_of_label = NodePath("Control/OutOfLabel")
+item_percentage_bar = NodePath("Control/ProgressBar")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=582521382]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -34.0
+offset_right = 201.0
+offset_bottom = -11.0
+grow_vertical = 0
+
+[node name="OutOfLabel" type="Label" parent="CanvasLayer/Control" unique_id=116081719]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 71.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "10/10"
+script = ExtResource("6_66tet")
+
+[node name="ProgressBar" type="Control" parent="CanvasLayer/Control" unique_id=602643519 node_paths=PackedStringArray("filling")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = -0.5
+offset_right = 232.0
+offset_bottom = 4.0
+grow_vertical = 2
+script = ExtResource("6_nfk4m")
+filling = NodePath("Background/Filling")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control/ProgressBar" unique_id=310027000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+
+[node name="Filling" type="ColorRect" parent="CanvasLayer/Control/ProgressBar/Background" unique_id=1373462987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScreenFader" parent="." unique_id=470942224 instance=ExtResource("10_qwutr")]

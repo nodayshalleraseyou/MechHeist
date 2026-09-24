@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dcqs3vqmmhwkj"]
+
+[ext_resource type="PackedScene" uid="uid://bdgwa3icic776" path="res://scenes/screen_fader.tscn" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://blixcyhjssph2" path="res://main_menu.gd" id="1_7vrkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29219013, 0.29219, 0.29219002, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="MainMenu" type="Node2D" unique_id=1301276682 node_paths=PackedStringArray("screen_fader")]
+script = ExtResource("1_7vrkn")
+screen_fader = NodePath("ScreenFader")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1597419325]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1860172860]
+modulate = Color(0.1254902, 0.13333334, 0.15686275, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1160045658]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_top = 110.0
+offset_right = 43.5
+offset_bottom = 133.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "Chwumbus"
+
+[node name="PlayButton" type="Button" parent="CanvasLayer" unique_id=963678031]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.25
+offset_top = -25.0
+offset_right = 73.25
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=1591869274]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.25
+offset_top = 45.0
+offset_right = 73.25
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+text = "Quit"
+
+[node name="ScreenFader" parent="." unique_id=470942224 instance=ExtResource("1_06t4h")]
+
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]

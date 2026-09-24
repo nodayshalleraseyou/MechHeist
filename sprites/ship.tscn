@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bbq6myp0x03i5"]
+
+[ext_resource type="Script" uid="uid://b5e1gqi8a6ddj" path="res://ship.gd" id="1_rghik"]
+[ext_resource type="Texture2D" uid="uid://bw8is8yyit7wd" path="res://sprites/002_mech.png" id="2_kqafk"]
+[ext_resource type="PackedScene" uid="uid://dxirfaa4tpytb" path="res://scenes/cargo_token.tscn" id="2_ku24p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbfoc"]
+radius = 14.0
+
+[node name="Ship" type="RigidBody2D" unique_id=1506033227]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 2.0
+script = ExtResource("1_rghik")
+cargo_token = ExtResource("2_ku24p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=138606151]
+shape = SubResource("CircleShape2D_hbfoc")
+
+[node name="BodySprite2D" type="Sprite2D" parent="." unique_id=1184473173]
+texture = ExtResource("2_kqafk")
