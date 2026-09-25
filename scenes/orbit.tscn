@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b6k2efuteb707"]
+
+[sub_resource type="GDScript" id="GDScript_3jqdc"]
+script/source = "extends Node2D
+class_name Orbit
+
+@export var orbit_center_node: Node2D
+@export var orbiter_node: Node2D
+@export var orbit_period: float = 10.0
+@export var clockwise: bool = true
+
+var radius: float
+var angle: float
+
+func _ready() -> void:
+	if orbiter_node == null:
+		orbiter_node = get_parent() as Node2D
+	var offset = orbiter_node.global_position - orbit_center_node.global_position
+	radius = offset.length()
+	angle = offset.angle()
+
+func _process(delta: float) -> void:
+	var direction = 1.0 if clockwise else -1.0
+	angle += direction * TAU / orbit_period * delta
+	orbiter_node.global_position = orbit_center_node.global_position + Vector2(cos(angle), sin(angle)) * radius
+"
+
+[node name="Orbit" type="Node2D" unique_id=248586992]
+script = SubResource("GDScript_3jqdc")

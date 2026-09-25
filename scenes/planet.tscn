@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bnvrukqe6dmiy"]
+
+[ext_resource type="Texture2D" uid="uid://cq5mm1crpooly" path="res://sprites/circle.svg" id="1_h8ms6"]
+[ext_resource type="Script" uid="uid://bol0idbm2pqx0" path="res://scripts/planet.gd" id="2_ggt7d"]
+
+[node name="Planet" type="Sprite2D" unique_id=101096072]
+modulate = Color(0.59607846, 0.39607844, 1, 1)
+scale = Vector2(0.37396693, 0.37396693)
+texture = ExtResource("1_h8ms6")
+script = ExtResource("2_ggt7d")

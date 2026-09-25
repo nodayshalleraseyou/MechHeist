@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://co2fqe47053r1"]
+
+[ext_resource type="Texture2D" uid="uid://ci54833kndy8m" path="res://sprites/hexagon.svg" id="1_1di36"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_671wp"]
+radius = 23.021727
+
+[node name="Rock" type="RigidBody2D" unique_id=1962656982]
+mass = 5.0
+gravity_scale = 0.0
+linear_damp = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=756659874]
+scale = Vector2(0.09546539, 0.09546529)
+texture = ExtResource("1_1di36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=64949423]
+shape = SubResource("CircleShape2D_671wp")

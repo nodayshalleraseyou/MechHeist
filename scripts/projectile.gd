@@ -22,4 +22,7 @@ func _physics_process(delta: float) -> void:
 func deal_damage(node : Node2D):
 	if node is Ship:
 		node.deal_damage()
+		queue_free()
+	if node is Rock:
+		queue_free()
 	

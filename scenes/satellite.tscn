@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://3ob3o4d88joq"]
+
+[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ship.tscn" id="1_spm53"]
+[ext_resource type="Texture2D" uid="uid://cga7e3r65qlhm" path="res://sprites/000_satellite.png" id="2_icwpa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icwpa"]
+radius = 15.0
+
+[node name="Satellite" unique_id=1506033227 instance=ExtResource("1_spm53")]
+collision_layer = 2
+collision_mask = 0
+freeze = true
+
+[node name="BodySprite2D" parent="." index="0" unique_id=1184473173]
+texture = ExtResource("2_icwpa")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=138606151]
+shape = SubResource("CircleShape2D_icwpa")

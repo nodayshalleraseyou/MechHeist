@@ -14,8 +14,8 @@ linear_damp = 2.0
 script = ExtResource("1_rghik")
 cargo_token = ExtResource("2_ku24p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=138606151]
-shape = SubResource("CircleShape2D_hbfoc")
-
 [node name="BodySprite2D" type="Sprite2D" parent="." unique_id=1184473173]
 texture = ExtResource("2_kqafk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=138606151]
+shape = SubResource("CircleShape2D_hbfoc")

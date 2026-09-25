@@ -2,45 +2,128 @@
 
 [ext_resource type="Texture2D" uid="uid://c0c0bmyyhwpsl" path="res://sprites/square_16.png" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://bpbawrvs2heab" path="res://scripts/player_input_handler.gd" id="1_gyfs4"]
-[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://sprites/ship.tscn" id="2_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ship.tscn" id="2_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://dxirfaa4tpytb" path="res://scenes/cargo_token.tscn" id="3_wr18j"]
+[ext_resource type="Script" uid="uid://87wow5564f8k" path="res://scripts/orbit.gd" id="4_671wp"]
+[ext_resource type="PackedScene" uid="uid://bnvrukqe6dmiy" path="res://scenes/planet.tscn" id="4_qwutr"]
 [ext_resource type="PackedScene" uid="uid://chmwceh1kd4se" path="res://scenes/blaster.tscn" id="5_nfk4m"]
 [ext_resource type="Script" uid="uid://f53clfqw2a3" path="res://scripts/player_hud.gd" id="6_7ycvg"]
 [ext_resource type="Script" uid="uid://wpjiexib1vcg" path="res://scripts/out_of_label.gd" id="6_66tet"]
+[ext_resource type="PackedScene" uid="uid://co2fqe47053r1" path="res://scenes/rock.tscn" id="6_mo76n"]
 [ext_resource type="Script" uid="uid://bcoptldff15f0" path="res://scripts/percentage_bar.gd" id="6_nfk4m"]
 [ext_resource type="Script" uid="uid://dpccqoffgou6d" path="res://scripts/follow_target.gd" id="6_wr18j"]
+[ext_resource type="Script" uid="uid://c5id1bukcf8s1" path="res://scripts/rock.gd" id="7_42l1d"]
+[ext_resource type="PackedScene" uid="uid://3ob3o4d88joq" path="res://scenes/satellite.tscn" id="10_2jcla"]
 [ext_resource type="PackedScene" uid="uid://bdgwa3icic776" path="res://scenes/screen_fader.tscn" id="10_qwutr"]
 
 [node name="MainScene" type="Node2D" unique_id=624439121]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1623539619]
 modulate = Color(0.1254902, 0.13333334, 0.21176471, 1)
+position = Vector2(-94, -220)
 scale = Vector2(1000, 1000)
 texture = ExtResource("1_d5x1h")
 
 [node name="PlayerInputHandler" type="Node2D" parent="." unique_id=287987951 node_paths=PackedStringArray("player_ship")]
 script = ExtResource("1_gyfs4")
-player_ship = NodePath("../Ship")
+player_ship = NodePath("../Ships/Ship")
 
 [node name="CargoToken" parent="." unique_id=1780440403 instance=ExtResource("3_wr18j")]
 position = Vector2(-42, 22)
 
-[node name="Ship2" parent="." unique_id=1960021945 instance=ExtResource("2_gyfs4")]
-position = Vector2(-60, -49)
+[node name="Planets" type="Node" parent="." unique_id=334444380]
+
+[node name="Star" parent="Planets" unique_id=900019173 instance=ExtResource("4_qwutr")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(814, 61)
+
+[node name="Planet" parent="Planets" unique_id=101096072 instance=ExtResource("4_qwutr")]
+position = Vector2(710.75, -441.25)
+scale = Vector2(0.16838844, 0.16838844)
+
+[node name="Orbit" type="Node" parent="Planets/Planet" unique_id=1675951624 node_paths=PackedStringArray("orbit_center")]
+script = ExtResource("4_671wp")
+orbit_center = NodePath("../../Star")
+period_time = 15.0
+
+[node name="Planet3" parent="Planets" unique_id=999956207 instance=ExtResource("4_qwutr")]
+position = Vector2(981.0001, 377.00006)
+scale = Vector2(0.16838844, 0.16838844)
+
+[node name="Orbit" type="Node" parent="Planets/Planet3" unique_id=1293155576 node_paths=PackedStringArray("orbit_center")]
+script = ExtResource("4_671wp")
+orbit_center = NodePath("../../Star")
+period_time = 15.0
+
+[node name="Planet2" parent="Planets" unique_id=967154945 instance=ExtResource("4_qwutr")]
+modulate = Color(0.50928617, 0.50928617, 0.50928617, 1)
+position = Vector2(522, -558)
+scale = Vector2(0.08006198, 0.08006198)
+
+[node name="Orbit" type="Node" parent="Planets/Planet2" unique_id=1151202081 node_paths=PackedStringArray("orbit_center")]
+script = ExtResource("4_671wp")
+orbit_center = NodePath("../../Planet")
+period_time = 8.0
+
+[node name="Rocks" type="Node" parent="." unique_id=2012577103]
+
+[node name="Rock" parent="Rocks" unique_id=1962656982 instance=ExtResource("6_mo76n")]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+position = Vector2(787, 243)
+mass = 0.25
+script = ExtResource("7_42l1d")
+
+[node name="Rock2" parent="Rocks" unique_id=821750576 instance=ExtResource("6_mo76n")]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+position = Vector2(598, 286)
+mass = 0.25
+script = ExtResource("7_42l1d")
+
+[node name="Rock3" parent="Rocks" unique_id=179551494 instance=ExtResource("6_mo76n")]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+position = Vector2(563, 413)
+mass = 0.25
+script = ExtResource("7_42l1d")
+
+[node name="Rock4" parent="Rocks" unique_id=1231164709 instance=ExtResource("6_mo76n")]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+position = Vector2(509, 327)
+mass = 0.25
+script = ExtResource("7_42l1d")
+
+[node name="Rock5" parent="Rocks" unique_id=1606545381 instance=ExtResource("6_mo76n")]
+modulate = Color(0.3854925, 0.38549247, 0.38549247, 1)
+position = Vector2(705, 402)
+mass = 0.25
+script = ExtResource("7_42l1d")
+
+[node name="Ships" type="Node" parent="." unique_id=1896721078]
+
+[node name="Ship2" parent="Ships" unique_id=1960021945 instance=ExtResource("2_gyfs4")]
+position = Vector2(653, 154)
 current_cargo = 10
 
-[node name="Ship" parent="." unique_id=1506033227 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
+[node name="Ship" parent="Ships" unique_id=1591568859 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
+position = Vector2(129, -167)
 equipped_item = NodePath("Blaster")
 
-[node name="Blaster" parent="Ship" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
+[node name="Blaster" parent="Ships/Ship" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
+
+[node name="Satellite" parent="Ships" unique_id=1506033227 instance=ExtResource("10_2jcla")]
+position = Vector2(799, -577)
+
+[node name="Orbit" type="Node" parent="Ships/Satellite" unique_id=642596972 node_paths=PackedStringArray("orbit_center")]
+script = ExtResource("4_671wp")
+orbit_center = NodePath("../../../Planets/Planet")
+period_time = 15.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=543937805 node_paths=PackedStringArray("target")]
 script = ExtResource("6_wr18j")
-target = NodePath("../Ship")
+target = NodePath("../Ships/Ship")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=893884385 node_paths=PackedStringArray("player_ship", "item_out_of_label", "item_percentage_bar")]
 script = ExtResource("6_7ycvg")
-player_ship = NodePath("../Ship")
+player_ship = NodePath("../Ships/Ship")
 item_out_of_label = NodePath("Control/OutOfLabel")
 item_percentage_bar = NodePath("Control/ProgressBar")
 
