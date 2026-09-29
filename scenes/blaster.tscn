@@ -68,7 +68,7 @@ projectile_ps = ExtResource("2_towk8")
 spawn_point = NodePath("BodySprite2D/SpawnPoint")
 muzzle_flash = NodePath("BodySprite2D/MuzzleFlash")
 body_sprite = NodePath("BodySprite2D")
-projectile_speed = 200.0
+projectile_speed = 300.0
 
 [node name="BodySprite2D" type="Sprite2D" parent="." unique_id=235240525]
 position = Vector2(14, 0)
@@ -84,4 +84,4 @@ sprite_frames = SubResource("SpriteFrames_nfk4m")
 frame = 6
 frame_progress = 1.0
 
-[connection signal="animation_finished" from="BodySprite2D/MuzzleFlash" to="." method="_on_muzzle_flash_animation_finished"]
+[connection signal="animation_finished" from="BodySprite2D/MuzzleFlash" to="." method="on_muzzle_flash_animation_finished"]

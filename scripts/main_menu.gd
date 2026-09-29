@@ -12,9 +12,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_play_button_pressed() -> void:
+func on_play_button_pressed() -> void:
 	screen_fader.fade_to_black("res://main_scene.tscn")
 
 
-func _on_quit_button_pressed() -> void:
+func on_quit_button_pressed() -> void:
 	get_tree().quit()

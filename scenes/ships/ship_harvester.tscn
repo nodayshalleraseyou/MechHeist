@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cml80ammjte8m"]
+
+[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ships/ship.tscn" id="1_5m0yb"]
+[ext_resource type="Script" uid="uid://dharv1st1r001" path="res://scripts/ai/ai_harvester.gd" id="2_5m0yb"]
+
+[node name="ShipHarvester" unique_id=1506033227 instance=ExtResource("1_5m0yb")]
+
+[node name="AIHarvester" type="Node" parent="." index="2" unique_id=1598341568]
+script = ExtResource("2_5m0yb")
+metadata/_custom_type_script = "uid://dharv1st1r001"

@@ -1,11 +1,18 @@
 extends Sprite2D
 class_name Planet
 
-# Called when the node enters the scene tree for the first time.
+var stored_cargo: int = 0
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if SystemManager.instance:
+		SystemManager.instance.register_planet(self)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _exit_tree() -> void:
+	if SystemManager.instance:
+		SystemManager.instance.unregister_planet(self)
+
+
+func take_cargo(amount : int):
+	stored_cargo += amount

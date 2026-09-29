@@ -57,8 +57,8 @@ func use(ship : Ship):
 	projectile.global_position = spawn_point.global_position
 	projectile.global_rotation = global_rotation
 	var launch_velocity = global_transform.x * projectile_speed + ship.linear_velocity
-	projectile.launch_projectile(launch_velocity)
+	projectile.launch_projectile(launch_velocity, ship)
 
 
-func _on_muzzle_flash_animation_finished() -> void:
+func on_muzzle_flash_animation_finished() -> void:
 	muzzle_flash.visible = false

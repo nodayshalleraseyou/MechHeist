@@ -2,10 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://c0c0bmyyhwpsl" path="res://sprites/square_16.png" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://bpbawrvs2heab" path="res://scripts/player_input_handler.gd" id="1_gyfs4"]
-[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ship.tscn" id="2_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ships/ship.tscn" id="2_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://dxirfaa4tpytb" path="res://scenes/cargo_token.tscn" id="3_wr18j"]
 [ext_resource type="Script" uid="uid://87wow5564f8k" path="res://scripts/orbit.gd" id="4_671wp"]
 [ext_resource type="PackedScene" uid="uid://bnvrukqe6dmiy" path="res://scenes/planet.tscn" id="4_qwutr"]
+[ext_resource type="PackedScene" uid="uid://dir7kkjtidvuo" path="res://scenes/gravity_well.tscn" id="5_m35m6"]
 [ext_resource type="PackedScene" uid="uid://chmwceh1kd4se" path="res://scenes/blaster.tscn" id="5_nfk4m"]
 [ext_resource type="Script" uid="uid://f53clfqw2a3" path="res://scripts/player_hud.gd" id="6_7ycvg"]
 [ext_resource type="Script" uid="uid://wpjiexib1vcg" path="res://scripts/out_of_label.gd" id="6_66tet"]
@@ -13,10 +14,22 @@
 [ext_resource type="Script" uid="uid://bcoptldff15f0" path="res://scripts/percentage_bar.gd" id="6_nfk4m"]
 [ext_resource type="Script" uid="uid://dpccqoffgou6d" path="res://scripts/follow_target.gd" id="6_wr18j"]
 [ext_resource type="Script" uid="uid://c5id1bukcf8s1" path="res://scripts/rock.gd" id="7_42l1d"]
-[ext_resource type="PackedScene" uid="uid://3ob3o4d88joq" path="res://scenes/satellite.tscn" id="10_2jcla"]
+[ext_resource type="PackedScene" uid="uid://3ob3o4d88joq" path="res://scenes/ships/ship_satellite.tscn" id="10_2jcla"]
 [ext_resource type="PackedScene" uid="uid://bdgwa3icic776" path="res://scenes/screen_fader.tscn" id="10_qwutr"]
+[ext_resource type="PackedScene" uid="uid://b6k2efuteb707" path="res://scenes/orbit.tscn" id="13_84odl"]
+[ext_resource type="PackedScene" uid="uid://cpgks0s3kykfp" path="res://scenes/ships/ship_guard.tscn" id="14_ak604"]
+[ext_resource type="PackedScene" uid="uid://cml80ammjte8m" path="res://scenes/ships/ship_harvester.tscn" id="15_vimvf"]
+[ext_resource type="Texture2D" uid="uid://cq5mm1crpooly" path="res://sprites/circle.svg" id="16_m35m6"]
+[ext_resource type="Script" uid="uid://2cn1ckr2lw6g" path="res://scripts/nebula.gd" id="17_nebula"]
+[ext_resource type="Script" uid="uid://dsm4n4g3raa01" path="res://scripts/system_manager.gd" id="18_manager"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqes3"]
+radius = 243.1152
 
 [node name="MainScene" type="Node2D" unique_id=624439121]
+
+[node name="SystemManager" type="Node" parent="." unique_id=181818181]
+script = ExtResource("18_manager")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1623539619]
 modulate = Color(0.1254902, 0.13333334, 0.21176471, 1)
@@ -26,7 +39,7 @@ texture = ExtResource("1_d5x1h")
 
 [node name="PlayerInputHandler" type="Node2D" parent="." unique_id=287987951 node_paths=PackedStringArray("player_ship")]
 script = ExtResource("1_gyfs4")
-player_ship = NodePath("../Ships/Ship")
+player_ship = NodePath("../Ships/PlayerShip")
 
 [node name="CargoToken" parent="." unique_id=1780440403 instance=ExtResource("3_wr18j")]
 position = Vector2(-42, 22)
@@ -36,6 +49,10 @@ position = Vector2(-42, 22)
 [node name="Star" parent="Planets" unique_id=900019173 instance=ExtResource("4_qwutr")]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(814, 61)
+
+[node name="GravityWell" parent="Planets/Star" unique_id=2044364510 instance=ExtResource("5_m35m6")]
+position = Vector2(2.2172928e-05, 8.0221)
+scale = Vector2(4.0441933, 4.0441933)
 
 [node name="Planet" parent="Planets" unique_id=101096072 instance=ExtResource("4_qwutr")]
 position = Vector2(710.75, -441.25)
@@ -100,32 +117,39 @@ script = ExtResource("7_42l1d")
 [node name="Ships" type="Node" parent="." unique_id=1896721078]
 
 [node name="Ship2" parent="Ships" unique_id=1960021945 instance=ExtResource("2_gyfs4")]
-position = Vector2(653, 154)
+position = Vector2(-56, 320)
 current_cargo = 10
 
-[node name="Ship" parent="Ships" unique_id=1591568859 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
+[node name="PlayerShip" parent="Ships" unique_id=1591568859 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
 position = Vector2(129, -167)
+team = "player"
 equipped_item = NodePath("Blaster")
 
-[node name="Blaster" parent="Ships/Ship" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
+[node name="Blaster" parent="Ships/PlayerShip" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
 
 [node name="Satellite" parent="Ships" unique_id=1506033227 instance=ExtResource("10_2jcla")]
-position = Vector2(799, -577)
+position = Vector2(814, -331)
 
-[node name="Orbit" type="Node" parent="Ships/Satellite" unique_id=642596972 node_paths=PackedStringArray("orbit_center")]
-script = ExtResource("4_671wp")
+[node name="Orbit" parent="Ships/Satellite" unique_id=248586992 node_paths=PackedStringArray("orbit_center") instance=ExtResource("13_84odl")]
 orbit_center = NodePath("../../../Planets/Planet")
-period_time = 15.0
+period_time = 30.0
+
+[node name="ShipGuard" parent="Ships" unique_id=811261043 instance=ExtResource("14_ak604")]
+position = Vector2(600, 122)
+
+[node name="ShipHarvester" parent="Ships" unique_id=1542379510 instance=ExtResource("15_vimvf")]
+position = Vector2(1571, 102)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=543937805 node_paths=PackedStringArray("target")]
 script = ExtResource("6_wr18j")
-target = NodePath("../Ships/Ship")
+target = NodePath("../Ships/PlayerShip")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=893884385 node_paths=PackedStringArray("player_ship", "item_out_of_label", "item_percentage_bar")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=893884385 node_paths=PackedStringArray("player_ship", "item_out_of_label", "item_percentage_bar", "cargo_label")]
 script = ExtResource("6_7ycvg")
-player_ship = NodePath("../Ships/Ship")
+player_ship = NodePath("../Ships/PlayerShip")
 item_out_of_label = NodePath("Control/OutOfLabel")
 item_percentage_bar = NodePath("Control/ProgressBar")
+cargo_label = NodePath("Control/CargoLabel")
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=582521382]
 layout_mode = 3
@@ -137,6 +161,13 @@ offset_top = -34.0
 offset_right = 201.0
 offset_bottom = -11.0
 grow_vertical = 0
+
+[node name="CargoLabel" type="Label" parent="CanvasLayer/Control" unique_id=261117720]
+layout_mode = 0
+offset_top = -31.0
+offset_right = 131.0
+offset_bottom = -8.0
+text = "10 | 10"
 
 [node name="OutOfLabel" type="Label" parent="CanvasLayer/Control" unique_id=116081719]
 layout_mode = 1
@@ -181,3 +212,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScreenFader" parent="." unique_id=470942224 instance=ExtResource("10_qwutr")]
+
+[node name="GravityWell" parent="." unique_id=95357777 instance=ExtResource("5_m35m6")]
+
+[node name="Nebula" type="Area2D" parent="." unique_id=418007463]
+position = Vector2(1813, 313)
+script = ExtResource("17_nebula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nebula" unique_id=1416916967]
+shape = SubResource("CircleShape2D_tqes3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nebula" unique_id=1787503368]
+self_modulate = Color(1, 0, 0.6745098, 0.53333336)
+texture = ExtResource("16_m35m6")

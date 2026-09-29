@@ -9,7 +9,7 @@ var velocity: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	body_entered.connect(on_body_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body):
+func on_body_entered(body):
 	if body is Ship:
 		body.add_cargo(1)
 		queue_free()

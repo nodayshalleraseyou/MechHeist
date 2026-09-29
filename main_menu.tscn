@@ -73,5 +73,5 @@ text = "Quit"
 
 [node name="ScreenFader" parent="." unique_id=470942224 instance=ExtResource("1_06t4h")]
 
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="on_quit_button_pressed"]
