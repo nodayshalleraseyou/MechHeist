@@ -41,6 +41,9 @@ func _physics_process(delta: float) -> void:
 		return
 	for ship in ships_inside.keys():
 		ships_inside[ship] += delta
+		#if ships_inside[ship] >= seconds_per_cargo:
+			#ships_inside[ship] = 0.0
+			#ship.add_cargo(cargo_per_tick)
 		while ships_inside[ship] >= seconds_per_cargo:
 			ships_inside[ship] -= seconds_per_cargo
 			ship.add_cargo(cargo_per_tick)

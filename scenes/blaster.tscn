@@ -71,7 +71,7 @@ body_sprite = NodePath("BodySprite2D")
 projectile_speed = 300.0
 
 [node name="BodySprite2D" type="Sprite2D" parent="." unique_id=235240525]
-position = Vector2(14, 0)
+position = Vector2(18, 0)
 texture = ExtResource("3_crvqn")
 
 [node name="SpawnPoint" type="Node2D" parent="BodySprite2D" unique_id=298069597]

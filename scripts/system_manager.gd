@@ -8,7 +8,6 @@ var nebulae: Array[Nebula] = []
 var planets: Array[Planet] = []
 
 
-# Set in _enter_tree so the instance exists before any sibling's _ready runs.
 func _enter_tree() -> void:
 	instance = self
 

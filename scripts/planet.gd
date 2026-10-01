@@ -14,5 +14,6 @@ func _exit_tree() -> void:
 		SystemManager.instance.unregister_planet(self)
 
 
-func take_cargo(amount : int):
-	stored_cargo += amount
+func take_cargo(ship : Ship):
+	stored_cargo += ship.current_cargo
+	ship.destory_cargo()

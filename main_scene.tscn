@@ -14,9 +14,7 @@
 [ext_resource type="Script" uid="uid://bcoptldff15f0" path="res://scripts/percentage_bar.gd" id="6_nfk4m"]
 [ext_resource type="Script" uid="uid://dpccqoffgou6d" path="res://scripts/follow_target.gd" id="6_wr18j"]
 [ext_resource type="Script" uid="uid://c5id1bukcf8s1" path="res://scripts/rock.gd" id="7_42l1d"]
-[ext_resource type="PackedScene" uid="uid://3ob3o4d88joq" path="res://scenes/ships/ship_satellite.tscn" id="10_2jcla"]
 [ext_resource type="PackedScene" uid="uid://bdgwa3icic776" path="res://scenes/screen_fader.tscn" id="10_qwutr"]
-[ext_resource type="PackedScene" uid="uid://b6k2efuteb707" path="res://scenes/orbit.tscn" id="13_84odl"]
 [ext_resource type="PackedScene" uid="uid://cpgks0s3kykfp" path="res://scenes/ships/ship_guard.tscn" id="14_ak604"]
 [ext_resource type="PackedScene" uid="uid://cml80ammjte8m" path="res://scenes/ships/ship_harvester.tscn" id="15_vimvf"]
 [ext_resource type="Texture2D" uid="uid://cq5mm1crpooly" path="res://sprites/circle.svg" id="16_m35m6"]
@@ -121,24 +119,32 @@ position = Vector2(-56, 320)
 current_cargo = 10
 
 [node name="PlayerShip" parent="Ships" unique_id=1591568859 node_paths=PackedStringArray("equipped_item") instance=ExtResource("2_gyfs4")]
-position = Vector2(129, -167)
+position = Vector2(132, -170)
 team = "player"
 equipped_item = NodePath("Blaster")
 
 [node name="Blaster" parent="Ships/PlayerShip" unique_id=1961371679 instance=ExtResource("5_nfk4m")]
 
-[node name="Satellite" parent="Ships" unique_id=1506033227 instance=ExtResource("10_2jcla")]
-position = Vector2(814, -331)
-
-[node name="Orbit" parent="Ships/Satellite" unique_id=248586992 node_paths=PackedStringArray("orbit_center") instance=ExtResource("13_84odl")]
-orbit_center = NodePath("../../../Planets/Planet")
-period_time = 30.0
-
 [node name="ShipGuard" parent="Ships" unique_id=811261043 instance=ExtResource("14_ak604")]
 position = Vector2(600, 122)
 
 [node name="ShipHarvester" parent="Ships" unique_id=1542379510 instance=ExtResource("15_vimvf")]
-position = Vector2(1571, 102)
+position = Vector2(1298, 210)
+
+[node name="ShipHarvester2" parent="Ships" unique_id=1506033227 instance=ExtResource("15_vimvf")]
+position = Vector2(1383, -639)
+
+[node name="ShipHarvester3" parent="Ships" unique_id=1156999847 instance=ExtResource("15_vimvf")]
+position = Vector2(113, -708)
+
+[node name="ShipHarvester4" parent="Ships" unique_id=1652643341 instance=ExtResource("15_vimvf")]
+position = Vector2(-772, -192)
+
+[node name="ShipHarvester5" parent="Ships" unique_id=1683548253 instance=ExtResource("15_vimvf")]
+position = Vector2(-679, 592)
+
+[node name="ShipHarvester6" parent="Ships" unique_id=1252585754 instance=ExtResource("15_vimvf")]
+position = Vector2(-291, -93)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=543937805 node_paths=PackedStringArray("target")]
 script = ExtResource("6_wr18j")
@@ -216,12 +222,34 @@ grow_vertical = 2
 [node name="GravityWell" parent="." unique_id=95357777 instance=ExtResource("5_m35m6")]
 
 [node name="Nebula" type="Area2D" parent="." unique_id=418007463]
-position = Vector2(1813, 313)
+position = Vector2(1915, 411)
 script = ExtResource("17_nebula")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nebula" unique_id=1416916967]
 shape = SubResource("CircleShape2D_tqes3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Nebula" unique_id=1787503368]
+self_modulate = Color(1, 0, 0.6745098, 0.53333336)
+texture = ExtResource("16_m35m6")
+
+[node name="Nebula2" type="Area2D" parent="." unique_id=1369395159]
+position = Vector2(-1143, -1088)
+script = ExtResource("17_nebula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nebula2" unique_id=1088515832]
+shape = SubResource("CircleShape2D_tqes3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nebula2" unique_id=1489759819]
+self_modulate = Color(1, 0, 0.6745098, 0.53333336)
+texture = ExtResource("16_m35m6")
+
+[node name="Nebula3" type="Area2D" parent="." unique_id=455867626]
+position = Vector2(-1143, 1122)
+script = ExtResource("17_nebula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nebula3" unique_id=426194777]
+shape = SubResource("CircleShape2D_tqes3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nebula3" unique_id=905569914]
 self_modulate = Color(1, 0, 0.6745098, 0.53333336)
 texture = ExtResource("16_m35m6")

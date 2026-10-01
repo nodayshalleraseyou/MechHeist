@@ -2,7 +2,7 @@ extends Node
 class_name Orbit
 
 @export var orbit_center : Node2D
-@export var period_time : float 
+@export var period_time : float = 10
 @export var direction : int = 1
 var radius : float = 0
 

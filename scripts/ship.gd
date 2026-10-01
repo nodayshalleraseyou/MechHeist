@@ -60,6 +60,9 @@ func remove_cargo(amount : int) -> int:
 	current_cargo -= removed
 	return removed
 
+func destory_cargo():
+	current_cargo = 0
+
 func is_cargo_full() -> bool:
 	return current_cargo >= max_cargo
 

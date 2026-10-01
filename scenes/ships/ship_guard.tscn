@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bbq6myp0x03i5" path="res://scenes/ships/ship.tscn" id="1_uwc3m"]
 [ext_resource type="PackedScene" uid="uid://chmwceh1kd4se" path="res://scenes/blaster.tscn" id="2_6yglj"]
 [ext_resource type="Texture2D" uid="uid://b7gte8771h88p" path="res://sprites/000_fighter.png" id="2_8cv28"]
-[ext_resource type="Script" uid="uid://dguard1a10001" path="res://scripts/ai/ai_guard.gd" id="2_guard"]
+[ext_resource type="Script" uid="uid://dguard1a10001" path="res://scripts/ai_scripts/ai_guard.gd" id="2_guard"]
 
 [node name="ShipGuard" unique_id=1506033227 node_paths=PackedStringArray("equipped_item") instance=ExtResource("1_uwc3m")]
 equipped_item = NodePath("Blaster")
